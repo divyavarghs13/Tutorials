@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+Name: <input type="text" id="myText" value="Mickey">
+
+<p>Click the button to change the value of the text field.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+  document.getElementById("myText").value = "Johnny Bravo";
+  var a = document.getElementById("myText").value;
+    $.ajax({
+            type: "GET",
+            url: 'http://localhost:8080/find',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+
+            success: function(response, status, jqXHR) {
+                console.log("create visit response -> " + response);
+     
+            },
+            error: function(jqXHR, status) {
+                var err = jqXHR.responseText;
+                console.log(err);
+            }
+        });
+}
+</script>
+
+</body>
+</html>
